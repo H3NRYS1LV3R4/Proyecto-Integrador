@@ -10,6 +10,7 @@ import { CrearProveedorComponent } from './componentes/crear-proveedor/crear-pro
 import { LoginComponent } from './componentes/login/login.component';
 import { CrearCategoriaComponent } from './componentes/crear-categoria/crear-categoria.component';
 import { authGuard } from './guard/auth.guard';
+import { CarritoComponent } from './componentes/carrito/carrito.component';
 import { ListarCategoriaComponent } from './componentes/listar-categoria/listar-categoria.component';
 import { ListarProductosComponent } from './componentes/listar-productos/listar-productos.component';
 import { VerProductoComponent } from './componentes/ver-productos/ver-productos.component';
@@ -53,5 +54,7 @@ export const routes: Routes = [
     { path: 'login' , component: LoginComponent},
     { path: 'detalleUsuario/:codUsu', component: VerUsuariosComponent, canActivate: [authGuard]},
 
-    { path: 'catalogo', component: CatalogoComponent }
+    { path: 'catalogo', component: CatalogoComponent },
+
+    { path: 'carrito', component: CarritoComponent },
 ];

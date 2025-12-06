@@ -25,6 +25,10 @@ public class UsuarioService {
 
 	@Autowired
     private PasswordEncoder passwordEncoder;
+	
+	public Usuario buscarPorNomUsu(String nomUsu) {
+	    return repoUsua.findByNomUsu(nomUsu);
+	}
 
     public Usuario registrarUsuario(Usuario usuario) {
         String claveCodificada = passwordEncoder.encode(usuario.getClave());

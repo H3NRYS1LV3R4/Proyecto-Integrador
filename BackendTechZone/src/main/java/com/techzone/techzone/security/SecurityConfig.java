@@ -1,5 +1,7 @@
 package com.techzone.techzone.security;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +12,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
 import com.techzone.techzone.services.CustomDetailsService;
 
 @Configuration
@@ -22,19 +28,22 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.cors().and().
-		csrf().disable() // Deshabilita CSRF para la API de prueba
+		http
+		.cors(cors -> cors.configurationSource(corsConfigurationSource()))
+		.csrf(csrf -> csrf.disable())
 		.authorizeHttpRequests(auth -> auth
 				 .requestMatchers(HttpMethod.GET, "/api/productos/**").permitAll()
 				 .requestMatchers(HttpMethod.GET, "/api/categorias/**").permitAll()
 				 .requestMatchers(HttpMethod.GET, "/api/marcas/**").permitAll()
 				 .requestMatchers(HttpMethod.GET, "/api/proveedores/**").permitAll()
 				 .requestMatchers(HttpMethod.GET, "/api/usuarios/**").hasRole("ADMIN")
+				 .requestMatchers(HttpMethod.GET, "/api/compras/reporte").hasRole("ADMIN")
 				 .requestMatchers(HttpMethod.POST, "/api/productos").hasRole("ADMIN")  		 //✅
 				 .requestMatchers(HttpMethod.POST, "/api/categorias").hasRole("ADMIN") 		 //✅
 				 .requestMatchers(HttpMethod.POST, "/api/marcas").hasRole("ADMIN")     		 //✅
 				 .requestMatchers(HttpMethod.POST, "/api/proveedores").hasRole("ADMIN")		 //✅
 				 .requestMatchers(HttpMethod.POST, "/api/usuarios/registrar").permitAll()            //✅
+				 .requestMatchers(HttpMethod.POST, "/api/compras/registrar").permitAll()            //✅
 				 .requestMatchers(HttpMethod.PUT, "/api/marcas/**").hasRole("ADMIN")   		 //✅
 				 .requestMatchers(HttpMethod.PUT, "/api/proveedores/**").hasRole("ADMIN")       //✅
 				 .requestMatchers(HttpMethod.DELETE, "/api/marcas/**").hasRole("ADMIN")		 //✅
@@ -43,7 +52,7 @@ public class SecurityConfig {
 				 .requestMatchers(HttpMethod.DELETE, "/api/usuarios").hasRole("ADMIN")         //✅	
 				 .anyRequest().authenticated()
 				)
-				.httpBasic(); 
+			.httpBasic(basic -> {});
 		return http.build();
 	}
 	@Autowired
@@ -58,6 +67,18 @@ public class SecurityConfig {
                 .and()
                 .build();
 
+    }
+	
+	@Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200")); 
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(Arrays.asList("*"));
+        configuration.setAllowCredentials(true);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
 }
 /*

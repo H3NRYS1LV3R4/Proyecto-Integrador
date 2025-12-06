@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Productos } from '../../models/productos';
 import { ProductoService } from '../../service/productos.service';
 import { Router } from '@angular/router';
+import { CarritoService } from '../../service/carrito.service';
+
 @Component({
   selector: 'app-catalogo',
   imports: [CommonModule],
@@ -14,7 +16,11 @@ export class CatalogoComponent {
     productos: Productos[] = [];
     cargoTerminada: boolean = false;
   
-    constructor(private productoService: ProductoService, private router: Router) {}
+    constructor(
+      private productoService: ProductoService,
+      private router: Router,
+      private carritoService: CarritoService
+    ) {}
 
     ngOnInit(): void {
     this.productoService.listarProductos().subscribe(data => {
@@ -26,5 +32,10 @@ export class CatalogoComponent {
 
   verDetalleProducto(codprod: number): void {
     this.router.navigate(['detalle-producto', codprod]);
+  }
+
+  agregarAlCarrito(producto: Productos): void {
+    this.carritoService.agregarProducto(producto);
+    alert('Producto agregado al carrito'); 
   }
 }

@@ -28,10 +28,11 @@ export class LoginComponent {
   }
 
   onLogin(): void {
-    this.authService.login(this.username, this.clave).subscribe(success => {
-      if (success) {
+    this.authService.login(this.username, this.clave).subscribe({
+      next: (userData) => {
         this.router.navigateByUrl(this.returnUrl);
-      } else {
+      },
+      error: (err) => {
         this.errorMessage = 'Usuario o contraseña incorrectos';
       }
     });

@@ -1,0 +1,77 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4 text-primary">🛒 Tu Carrito de Compras</h2>
+
+  <div *ngIf="mensaje" class="alert text-center" 
+       [ngClass]="{'alert-success': tipoMensaje === 'success', 'alert-danger': tipoMensaje === 'error'}">
+    {{ mensaje }}
+  </div>
+
+  <div *ngIf="items.length > 0; else carritoVacio">
+    <div class="table-responsive shadow-sm rounded">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="bg-light">
+          <tr>
+            <th class="ps-4">Producto</th>
+            <th class="text-center">Precio</th>
+            <th class="text-center" style="width: 15%;">Cantidad</th>
+            <th class="text-center">Subtotal</th>
+            <th class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items">
+            <td>
+              <div class="d-flex align-items-center">
+                <img [src]="'assets/productos/' + item.producto.codprod + '.jpg'" 
+                      onerror="this.src='assets/productos/defecto.jpg'"
+                      class="img-thumbnail me-3" style="width: 50px; height: 50px; object-fit: cover;">
+                <div>
+                  <h6 class="mb-0">{{ item.producto.nom_prod }}</h6>
+                  <small class="text-muted">{{ item.producto.des_prod | slice:0:30 }}...</small>
+                </div>
+              </div>
+            </td>
+            <td class="text-center">{{ item.producto.precio_compra | currency:'USD' }}</td>
+            <td class="text-center">
+              <input type="number" class="form-control form-control-sm text-center" 
+                     [value]="item.cantidad" min="1" 
+                     (change)="actualizarCantidad(item.producto.codprod, $event)">
+            </td>
+            <td class="text-center fw-bold">{{ item.total | currency:'USD' }}</td>
+            <td class="text-center">
+              <button class="btn btn-sm btn-outline-danger" (click)="eliminarItem(item.producto.codprod)">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <button class="btn btn-outline-secondary" (click)="vaciarCarrito()">
+          <i class="fa-solid fa-broom me-2"></i> Vaciar Carrito
+        </button>
+        <a routerLink="/catalogo" class="btn btn-link text-decoration-none ms-3">
+          <i class="fa-solid fa-arrow-left me-1"></i> Seguir Comprando
+        </a>
+      </div>
+      <div class="col-md-6 text-end">
+        <h4 class="mb-3">Total a Pagar: <span class="text-primary fw-bold">{{ total | currency:'USD' }}</span></h4>
+        <button class="btn btn-success btn-lg px-5 rounded-pill" (click)="procesarCompra()">
+          <i class="fa-solid fa-credit-card me-2"></i> Pagar Ahora
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #carritoVacio>
+    <div class="text-center py-5">
+      <i class="fa-solid fa-cart-shopping fa-4x text-muted mb-3"></i>
+      <h4 class="text-muted">Tu carrito está vacío</h4>
+      <p class="mb-4">¡Explora nuestro catálogo y encuentra lo que buscas!</p>
+      <a routerLink="/catalogo" class="btn btn-primary px-4 rounded-pill">Ir al Catálogo</a>
+    </div>
+  </ng-template>
+</div>

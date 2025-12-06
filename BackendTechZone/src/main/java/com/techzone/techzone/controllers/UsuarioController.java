@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import java.security.Principal;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -96,6 +97,21 @@ public class UsuarioController {
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
+	}
+	
+	@GetMapping("/login")
+	public ResponseEntity<Usuario> login(Principal principal) {
+	    if (principal == null) {
+	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+	    }
+	    
+	    Usuario usuario = servicio.buscarPorNomUsu(principal.getName());
+	    
+	    if (usuario != null) {
+	        usuario.setClave(null); 
+	        return ResponseEntity.ok(usuario);
+	    }
+	    return ResponseEntity.notFound().build();
 	}
 
 }
