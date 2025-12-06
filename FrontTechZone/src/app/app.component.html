@@ -1,0 +1,625 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-4" href="#">Tech Zone</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" routerLink="/listarProductos">Inicio</a></li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/catalogo">
+            <i class="fa-solid fa-book me-2"></i> Catálogo
+          </a>
+        </li>
+
+        <!-- -->
+        <!-- Panel Administrativo -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="panelDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <i class="fa-solid fa-gears me-2"></i> Panel Administrativo
+          </a>
+          <ul class="dropdown-menu p-4 shadow-lg" aria-labelledby="panelDropdown" style="min-width: 600px;">
+            <div class="container">
+              <div class="row d-flex justify-content-start">
+
+
+                <div class="col-12 col-md-4"> 
+                  <h6 class="dropdown-header">
+                    <i class="fa-solid fa-boxes-stacked me-2"></i> Productos
+                  </h6>
+                  <a class="dropdown-item" routerLink="/listarProductos">
+                    <i class="fa-solid fa-list me-2"></i> Listar Productos
+                  </a>
+                  <a class="dropdown-item" routerLink="/registrarProducto">
+                    <i class="fa-solid fa-plus me-2"></i> Registrar Producto
+                  </a>
+                  <hr>
+                  <h6 class="dropdown-header">
+                    <i class="fa-solid fa-tags me-2"></i> Categorías
+                  </h6>
+                  <a class="dropdown-item" routerLink="/listarCategorias">
+                    <i class="fa-solid fa-list me-2"></i> Listar Categorías
+                  </a>
+                  <a class="dropdown-item" routerLink="/crearCategoria">
+                    <i class="fa-solid fa-plus me-2"></i> Registrar Categoría
+                  </a>
+                </div>
+
+
+                <div class="col-12 col-md-4"> 
+                  <h6 class="dropdown-header">
+                    <i class="fa-solid fa-building me-2"></i> Marcas
+                  </h6>
+                  <a class="dropdown-item" routerLink="/listadoMarcas">
+                    <i class="fa-solid fa-list me-2"></i> Listar Marcas
+                  </a>
+                  <a class="dropdown-item" routerLink="/registrarMarca">
+                    <i class="fa-solid fa-plus me-2"></i> Crear Marca
+                  </a>
+                  <hr>
+                  <h6 class="dropdown-header">
+                    <i class="fa-solid fa-truck me-2"></i> Proveedores
+                  </h6>
+                  <a class="dropdown-item" routerLink="/listadoProveedores">
+                    <i class="fa-solid fa-list me-2"></i> Listar Proveedores
+                  </a>
+                  <a class="dropdown-item" routerLink="/registrarProveedor">
+                    <i class="fa-solid fa-plus me-2"></i> Crear Proveedor
+                  </a>
+                </div>
+
+
+                <div class="col-12 col-md-4"> 
+                  <h6 class="dropdown-header">
+                    <i class="fa-solid fa-users me-2"></i> Usuarios
+                  </h6>
+                  <a class="dropdown-item" routerLink="/listarUsuarios">
+                    <i class="fa-solid fa-list me-2"></i> Listar Usuarios
+                  </a>
+                  <a class="dropdown-item" routerLink="/crearUsuario">
+                    <i class="fa-solid fa-plus me-2"></i> Crear Usuario
+                  </a>
+                </div>
+              </div>
+            </div>
+          </ul>
+        </li>
+
+      </ul>
+      <button class="btn btn-outline-light d-flex align-items-center" routerLink="/login">
+        <i class="fa-solid fa-right-to-bracket me-2"></i> Iniciar Sesión
+      </button>
+      
+      <button class="btn btn-outline-light d-flex align-items-center ms-3" link="#">
+        <i class="fa-solid fa-shop"></i> Comprar
+      </button>
+      
+    </div>
+
+
+
+
+  </div>
+</nav>
+
+<br><br><br><br>
+
+<div id="carouselExample" class="carousel slide mt-3" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="assets/banner1.jpg" class="d-block w-100" alt="Banner 1">
+    </div>
+    <div class="carousel-item">
+      <img src="assets/banner2.jpg" class="d-block w-100" alt="Banner 2">
+    </div>
+    <div class="carousel-item">
+      <img src="assets/banner3.jpg" class="d-block w-100" alt="Banner 3">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Siguiente</span>
+  </button>
+</div>
+
+
+<section class="info-banner mt-5 py-5 text-center text-white"
+  style="background: linear-gradient(90deg, #0d6efd, #6610f2);">
+  <h2 class="fw-bold">Bienvenido a Tech Zone</h2>
+  <p class="fs-5">Descubre los mejores periféricos y productos tecnológicos del mercado.</p>
+</section>
+
+
+
+<section class="productos-destacados mt-5 container">
+  <h3 class="text-center fw-bold mb-4">Productos Destacados</h3>
+  <div class="row g-4">
+    <!-- Producto 1 -->
+    <div class="col-md-4">
+      <div class="card shadow-lg border-0">
+        <img src="assets/teclado.jpeg" class="card-img-top" alt="Imagen de Teclado Mecánico"
+          style="max-height: 200px; object-fit: cover;" />
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold">Teclado Mecánico</h5>
+          <p class="card-text fs-5 fw-bold text-primary">S/ 150.0</p>
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto1">
+            Ver más
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Producto 2 -->
+    <div class="col-md-4">
+      <div class="card shadow-lg border-0">
+        <img src="assets/mouse.jpg" class="card-img-top" alt="Imagen de Mouse Gamer"
+          style="max-height: 200px; object-fit: cover;" />
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold">Mouse Gamer</h5>
+          <p class="card-text fs-5 fw-bold text-primary">S/ 120.0</p>
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto2">
+            Ver más
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Producto 3 -->
+    <div class="col-md-4">
+      <div class="card shadow-lg border-0">
+        <img src="assets/monitor.jpg" class="card-img-top" alt="Imagen de Monitor 27"
+          style="max-height: 200px; object-fit: cover;" />
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold">Monitor 27"</h5>
+          <p class="card-text fs-5 fw-bold text-primary">S/ 800.0</p>
+
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto3">
+            Ver más
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="modalProducto1" tabindex="-1" aria-labelledby="modalProducto1Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalProducto1Label">Teclado Mecánico</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/teclado.jpeg" class="img-fluid mb-3" alt="Teclado Mecánico">
+        <p><strong>Descripción:</strong> Teclado RGB con switches Blue para una experiencia de escritura y gaming
+          precisa.</p>
+        <p><strong>Precio:</strong> S/ 150.0</p>
+        <p><strong>Características:</strong></p>
+        <ul>
+          <li>Iluminación RGB personalizable</li>
+          <li>Conexión USB con cable reforzado</li>
+          <li>Diseño compacto y ergonómico</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal-->
+<div class="modal fade" id="modalProducto2" tabindex="-1" aria-labelledby="modalProducto2Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalProducto2Label">Mouse Gamer</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/mouse.jpg" class="img-fluid mb-3" alt="Mouse Gamer">
+        <p><strong>Descripción:</strong> Mouse con sensor de alta precisión para un rendimiento superior en gaming.</p>
+        <p><strong>Precio:</strong> S/ 120.0</p>
+        <p><strong>Características:</strong></p>
+        <ul>
+          <li>Sensor óptico de 16000 DPI</li>
+          <li>6 botones programables</li>
+          <li>Ergonomía ideal para largas sesiones</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalProducto3" tabindex="-1" aria-labelledby="modalProducto3Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalProducto3Label">Monitor 27"</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/monitor.jpg" class="img-fluid mb-3" alt="Monitor 27">
+        <p><strong>Descripción:</strong> Monitor de 27 pulgadas con frecuencia de actualización de 144Hz, ideal para
+          gaming.</p>
+        <p><strong>Precio:</strong> S/ 800.0</p>
+        <p><strong>Características:</strong></p>
+        <ul>
+          <li>Resolución Full HD (1920x1080)</li>
+          <li>Tiempo de respuesta de 1 ms</li>
+          <li>Compatible con tecnología FreeSync</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+
+<section class="productos-destacados mt-5 container">
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card shadow-lg border-0">
+        <img src="assets/audifonos.jpg" class="card-img-top" alt="Imagen de Monitor 32"
+          style="max-height: 200px; object-fit: cover;" />
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold">Monitor 32"</h5>
+          <p class="card-text fs-5 fw-bold text-primary">S/ 1200.0</p>
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto4">
+            Ver más
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-lg border-0">
+        <img src="assets/tecladomeca.jpg" class="card-img-top" alt="Imagen de Teclado Mecánico Avanzado"
+          style="max-height: 200px; object-fit: cover;" />
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold">Teclado Mecánico Avanzado</h5>
+          <p class="card-text fs-5 fw-bold text-primary">S/ 250.0</p>
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto5">
+            Ver más
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-lg border-0">
+        <img src="assets/mousegamer.jpg" class="card-img-top" alt="Imagen de Mouse Ultra Pro"
+          style="max-height: 200px; object-fit: cover;" />
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold">Mouse Ultra Pro</h5>
+          <p class="card-text fs-5 fw-bold text-primary">S/ 300.0</p>
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto6">
+            Ver más
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="modalProducto4" tabindex="-1" aria-labelledby="modalProducto4Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalProducto4Label">Monitor 32"</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/audifonos.jpg" class="img-fluid mb-3" alt="Monitor 32">
+        <p><strong>Descripción:</strong> Monitor de 32 pulgadas con resolución 4K y tecnología HDR.</p>
+        <p><strong>Precio:</strong> S/ 1200.0</p>
+        <p><strong>Características:</strong></p>
+        <ul>
+          <li>Resolución 4K Ultra HD</li>
+          <li>HDR10 para colores vibrantes</li>
+          <li>Compatible con FreeSync y G-Sync</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal-->
+<div class="modal fade" id="modalProducto5" tabindex="-1" aria-labelledby="modalProducto5Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalProducto5Label">Teclado Mecánico Avanzado</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/tecladomeca.jpg" class="img-fluid mb-3" alt="Teclado Mecánico Avanzado">
+        <p><strong>Descripción:</strong> Teclado mecánico con switches rojos para una experiencia ultra silenciosa.</p>
+        <p><strong>Precio:</strong> S/ 250.0</p>
+        <p><strong>Características:</strong></p>
+        <ul>
+          <li>Iluminación RGB con 16.8 millones de colores</li>
+          <li>Estructura de aluminio resistente</li>
+          <li>Compatible con software de personalización</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalProducto6" tabindex="-1" aria-labelledby="modalProducto6Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalProducto6Label">Mouse Ultra Pro</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/mousegamer.jpg" class="img-fluid mb-3" alt="Mouse Ultra Pro">
+        <p><strong>Descripción:</strong> Mouse de gama alta diseñado para precisión y rendimiento.</p>
+        <p><strong>Precio:</strong> S/ 300.0</p>
+        <p><strong>Características:</strong></p>
+        <ul>
+          <li>Sensor óptico de 20000 DPI</li>
+          <li>Botones programables con respuesta táctil</li>
+          <li>Iluminación RGB con múltiples efectos</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+
+<section class="productos-destacados mt-5 container">
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card shadow-lg border-0">
+        <img src="assets/mouse1.jpeg" class="card-img-top" alt="Imagen de Disco SSD 512GB"
+          style="max-height: 200px; object-fit: cover;" />
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold">Disco SSD 512GB</h5>
+          <p class="card-text fs-5 fw-bold text-primary">S/ 400.0</p>
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto7">
+            Ver más
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-lg border-0">
+        <img src="assets/audifonos.jpg" class="card-img-top" alt="Imagen de Audífonos Gaming RGB"
+          style="max-height: 200px; object-fit: cover;" />
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold">Audífonos Gaming RGB</h5>
+          <p class="card-text fs-5 fw-bold text-primary">S/ 180.0</p>
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto8">
+            Ver más
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-lg border-0">
+        <img src="assets/mando.jpg" class="card-img-top" alt="Imagen de Fuente de Poder 650W"
+          style="max-height: 200px; object-fit: cover;" />
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold">Fuente de Poder 650W</h5>
+          <p class="card-text fs-5 fw-bold text-primary">S/ 300.0</p>
+          <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalProducto9">
+            Ver más
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="modalProducto7" tabindex="-1" aria-labelledby="modalProducto7Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalProducto7Label">Disco SSD 512GB</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/mouse1.jpeg" class="img-fluid mb-3" alt="Disco SSD 512GB">
+        <p><strong>Descripción:</strong> Disco sólido de alto rendimiento para almacenamiento rápido.</p>
+        <p><strong>Precio:</strong> S/ 400.0</p>
+        <p><strong>Características:</strong></p>
+        <ul>
+          <li>Capacidad: 512GB</li>
+          <li>Velocidad de lectura: 3500 MB/s</li>
+          <li>Durabilidad garantizada</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalProducto8" tabindex="-1" aria-labelledby="modalProducto8Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalProducto8Label">Audífonos Gaming RGB</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/audifonos.jpg" class="img-fluid mb-3" alt="Audífonos Gaming RGB">
+        <p><strong>Descripción:</strong> Audífonos para gaming con iluminación RGB personalizable.</p>
+        <p><strong>Precio:</strong> S/ 180.0</p>
+        <p><strong>Características:</strong></p>
+        <ul>
+          <li>Sonido envolvente 7.1</li>
+          <li>Micrófono desmontable</li>
+          <li>Compatible con PC y consolas</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalProducto9" tabindex="-1" aria-labelledby="modalProducto9Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalProducto9Label">Fuente de Poder 650W</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="assets/mando.jpg" class="img-fluid mb-3" alt="Fuente de Poder 650W">
+        <p><strong>Descripción:</strong> Fuente de poder eficiente y silenciosa.</p>
+        <p><strong>Precio:</strong> S/ 300.0</p>
+        <p><strong>Características:</strong></p>
+        <ul>
+          <li>Potencia: 650W</li>
+          <li>Certificación 80 Plus Gold</li>
+          <li>Ventilador silencioso con control térmico</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+
+
+<br><br>
+<hr>
+<br>
+<br><br>
+<router-outlet></router-outlet>
+<br><br>
+<br>
+
+<div class="container my-5">
+  <h3 class="text-center mb-4">Por qué elegirnos</h3>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Alta Calidad</h5>
+          <p class="card-text">Solo trabajamos con las mejores marcas para garantizar productos duraderos.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Soporte 24/7</h5>
+          <p class="card-text">Nuestro equipo está disponible para ayudarte en cualquier momento.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Envíos Rápidos</h5>
+          <p class="card-text">Entrega rápida y segura a cualquier lugar del país.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="container my-5">
+  <h3 class="text-center mb-4">Preguntas Frecuentes</h3>
+  <div class="accordion" id="faqAccordion">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faqOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+          ¿Cómo puedo realizar un pedido?
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Puedes realizar un pedido a través de nuestra página web o contactando a nuestro servicio al cliente.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faqTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+          ¿Cuáles son los métodos de pago aceptados?
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Aceptamos pagos con tarjetas de crédito, débito y transferencias bancarias.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faqThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+          ¿Realizan envíos a todo el país?
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Sí, hacemos envíos a nivel nacional con diferentes opciones de envío.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<footer class="text-center text-white py-3 mt-5" style="background-color: #343a40;">
+  <p class="mb-0">© 2025 Tech Zone | Todos los derechos reservados.</p>
+</footer> 

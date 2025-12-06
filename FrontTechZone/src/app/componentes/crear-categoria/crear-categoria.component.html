@@ -1,0 +1,28 @@
+<div class="container mt-5 p-4 shadow rounded bg-white" style="max-width: 700px;">
+    <!-- Alerta -->
+    <ng-container *ngIf="mensaje">
+      <div [ngClass]="{
+          'alert': true,
+          'alert-success': tipoMensaje == 'success',
+          'alert-danger': tipoMensaje == 'error'
+        }">
+        {{ mensaje }}
+      </div>
+    </ng-container>
+  
+    <h3 class="mb-4 text-primary">Registrar nueva categoría</h3>
+  
+    <form class="row g-3" (ngSubmit)="crearCategoria()">
+      
+      <div class="col-md-12">
+        <label for="nom_cat" class="form-label fw-bold">Nombre de la categoría</label>
+        <input type="text" class="form-control" id="nom_cat" name="nom_cat"
+               [(ngModel)]="categoria.nom_cat" required placeholder="Ej: Teclados">
+      </div>
+  
+      <div class="col-12 d-flex justify-content-end mt-3">
+        <button type="submit" class="btn btn-success px-4">Guardar</button>
+      </div>
+    </form>
+  </div>
+  

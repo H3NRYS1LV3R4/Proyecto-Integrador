@@ -1,0 +1,78 @@
+<div class="container mt-5 p-4 shadow rounded bg-white" style="max-width: 700px;">
+    <!-- Alerta -->
+    <ng-container *ngIf="mensaje">
+      <div [ngClass]="{
+          'alert': true,
+          'alert-success': tipoMensaje == 'success',
+          'alert-danger': tipoMensaje == 'error'
+        }">
+        {{ mensaje }}
+      </div>
+    </ng-container>
+  
+    <h3 class="mb-4 text-primary">Actualizar usuario</h3>
+  
+    <form class="row g-3" (ngSubmit)="actualizarUsuario()">
+      <div class="col-md-4">
+        <label for="codusu" class="form-label fw-semibold">Código</label>
+        <input type="number" class="form-control" id="codusu" name="codusu"
+               [(ngModel)]="usuario.codusu" readonly>
+      </div>
+  
+      <div class="col-md-4">
+        <label for="dni_usu" class="form-label fw-semibold">DNI</label>
+        <input type="text" class="form-control" id="dni_usu" name="dni_usu"
+               [(ngModel)]="usuario.dni_usu" placeholder="Ej: 12345678" required>
+      </div>
+  
+      <div class="col-md-4">
+        <label for="telefono" class="form-label fw-semibold">Teléfono</label>
+        <input type="text" class="form-control" id="telefono" name="telefono"
+               [(ngModel)]="usuario.telefono" placeholder="Ej: 987654321" required>
+      </div>
+  
+      <div class="col-md-6">
+        <label for="nomUsu" class="form-label fw-semibold">Nombre</label>
+        <input type="text" class="form-control" id="nomUsu" name="nomUsu"
+               [(ngModel)]="usuario.nomUsu" placeholder="Ej: Juan" required>
+      </div>
+  
+      <div class="col-md-6">
+        <label for="ape_usu" class="form-label fw-semibold">Apellido</label>
+        <input type="text" class="form-control" id="ape_usu" name="ape_usu"
+               [(ngModel)]="usuario.ape_usu" placeholder="Ej: Pérez" required>
+      </div>
+  
+      <div class="col-md-8">
+        <label for="email" class="form-label fw-semibold">Email</label>
+        <input type="email" class="form-control" id="email" name="email"
+               [(ngModel)]="usuario.email" placeholder="Ej: juan@example.com" required>
+      </div>
+  
+      <div class="col-md-4">
+        <label for="usuario" class="form-label fw-semibold">Usuario</label>
+        <input type="text" class="form-control" id="usuario" name="usuario"
+               [(ngModel)]="usuario.usuario" placeholder="Ej: juanperez" required>
+      </div>
+  
+      <div class="col-md-6">
+        <label for="clave" class="form-label fw-semibold">Clave</label>
+        <input type="password" class="form-control" id="clave" name=""
+               [(ngModel)]="usuario.clave" placeholder="Nueva contraseña (opcional)">
+      </div>
+  
+      <div class="col-md-6">
+        <label for="rol" class="form-label fw-semibold">Rol</label>
+        <select class="form-select" id="rol" name="rol"
+                [(ngModel)]="usuario.rol" required>
+          <option value="ADMIN">Admin</option>
+          <option value="USUARIO">Usuario</option>
+        </select>
+      </div>
+  
+      <div class="col-12 d-flex justify-content-end mt-3">
+        <button type="submit" class="btn btn-primary px-4">Actualizar</button>
+      </div>
+    </form>
+  </div>
+  

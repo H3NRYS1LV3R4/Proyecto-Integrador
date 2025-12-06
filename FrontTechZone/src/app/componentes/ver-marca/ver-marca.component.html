@@ -1,0 +1,29 @@
+<div class="container mt-5" style="max-width: 650px;">
+  <div class="text-center mb-4">
+    <h2 class="text-primary">📌 Detalle de Marca</h2>
+    <hr class="w-50 mx-auto" />
+  </div>
+
+  <div class="card shadow-lg rounded-4 border-primary">
+    <div class="card-body px-5 py-4">
+      <div class="mb-3">
+        <h5 class="fw-semibold text-secondary">Código</h5>
+        <p class="fs-5">{{ marca.codmarca }}</p>
+      </div>
+      <div class="mb-3">
+        <h5 class="fw-semibold text-secondary">Nombre</h5>
+        <p class="fs-5">{{ marca.nom_marca }}</p>
+      </div>
+      <div class="mb-3">
+        <h5 class="fw-semibold text-secondary">País</h5>
+        <p class="fs-5">{{ marca.pai_marca }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end mt-4">
+    <a routerLink="/listadoMarcas" class="btn btn-primary px-4">
+      ← Volver
+    </a>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="container p-4 shadow rounded bg-white" style="max-width: 400px; width: 100%;">
+    <h2 class="text-center mb-4">Iniciar sesión</h2>
+    <form (ngSubmit)="onLogin()" class="formulario">
+      <div class="mb-3">
+        <label for="username" class="form-label">Usuario:</label>
+        <input 
+          type="text" 
+          id="username" 
+          [(ngModel)]="username" 
+          name="username" 
+          class="form-control"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label for="clave" class="form-label">Contraseña:</label>
+        <input 
+          type="password" 
+          id="clave" 
+          [(ngModel)]="clave" 
+          name="clave" 
+          class="form-control"
+          required>
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+    </form>
+  </div>
+</div>

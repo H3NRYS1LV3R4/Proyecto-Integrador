@@ -1,0 +1,38 @@
+<div class="container mt-5 p-4 shadow rounded bg-white" style="max-width: 700px;">
+    <!-- Alerta -->
+    <ng-container *ngIf="mensaje">
+      <div [ngClass]="{
+          'alert': true,
+          'alert-success': tipoMensaje == 'success',
+          'alert-danger': tipoMensaje == 'error'
+        }">
+        {{ mensaje }}
+      </div>
+    </ng-container>
+  
+    <h3 class="mb-4 text-primary">Actualizar marca</h3>
+  
+    <form class="row g-3" (ngSubmit)="actualizarMarca()">
+      <div class="col-md-4">
+        <label for="codmarca" class="form-label fw-semibold">Código</label>
+        <input type="number" class="form-control" id="codmarca" name="codmarca"
+               [(ngModel)]="marca.codmarca" readonly>
+      </div>
+  
+      <div class="col-md-8">
+        <label for="nom_marca" class="form-label fw-semibold">Nombre de la marca</label>
+        <input type="text" class="form-control" id="nom_marca" name="nom_marca"
+               [(ngModel)]="marca.nom_marca" placeholder="Ej: Ray-Ban" required>
+      </div>
+  
+      <div class="col-md-6">
+        <label for="pai_marca" class="form-label fw-semibold">País de origen</label>
+        <input type="text" class="form-control" id="pai_marca" name="pai_marca"
+               [(ngModel)]="marca.pai_marca" placeholder="Ej: Italia" required>
+      </div>
+  
+      <div class="col-12 d-flex justify-content-end mt-3">
+        <button type="submit" class="btn btn-primary px-4">Actualizar</button>
+      </div>
+    </form>
+  </div>

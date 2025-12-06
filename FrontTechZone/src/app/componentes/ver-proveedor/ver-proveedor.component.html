@@ -1,0 +1,25 @@
+<div class="container mt-5" style="max-width: 650px;">
+    <div class="text-center mb-4">
+      <h2 class="text-success">📦 Detalle de Proveedor</h2>
+      <hr class="w-50 mx-auto" />
+    </div>
+  
+    <div class="card shadow-lg rounded-4 border-success">
+      <div class="card-body px-5 py-4">
+        <div class="mb-3">
+          <h5 class="fw-semibold text-secondary">Código</h5>
+          <p class="fs-5">{{ proveedor.codprov }}</p>
+        </div>
+        <div class="mb-3">
+          <h5 class="fw-semibold text-secondary">Nombre</h5>
+          <p class="fs-5">{{ proveedor.nom_prov }}</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="d-flex justify-content-end mt-4">
+      <a routerLink="/listadoProveedores" class="btn btn-success px-4">
+        ← Volver
+      </a>
+    </div>
+  </div>

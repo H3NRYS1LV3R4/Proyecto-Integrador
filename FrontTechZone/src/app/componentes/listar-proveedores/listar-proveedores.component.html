@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <div class="text-center mb-4">
+    <h2 class="fw-bold" style="background: linear-gradient(to right, #28a745, #20c997); -webkit-background-clip: text; color: transparent;">
+      {{ titulo }}
+    </h2>
+    <p class="text-muted">Gestión completa de proveedores registrados</p>
+    <hr class="w-50 mx-auto border-2 border-success opacity-50" />
+  </div>
+
+  <div *ngIf="cargoTerminada">
+    <div class="p-3 bg-white shadow-lg rounded-4 border border-light">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle mb-0">
+          <thead class="bg-success text-white">
+            <tr>
+              <th class="text-center">Código</th>
+              <th>Nombre</th>
+              <th class="text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let proveedor of proveedores">
+              <td class="text-center fw-semibold text-success">{{ proveedor.codprov }}</td>
+              <td class="text-capitalize">{{ proveedor.nom_prov }}</td>
+              <td class="text-center">
+                <div class="d-flex justify-content-center gap-2">
+                  <button class="btn btn-sm btn-outline-primary rounded-pill px-3" (click)="editarProveedor(proveedor.codprov)">
+                    <i class="fa-solid fa-pen-to-square me-1 text-primary"></i>Editar
+                  </button>
+                  <button class="btn btn-sm btn-outline-success rounded-pill px-3" (click)="verDetalleProveedor(proveedor.codprov)">
+                    <i class="fa-solid fa-eye me-1 text-success"></i>Detalle
+                  </button>
+                  <button class="btn btn-sm btn-outline-danger rounded-pill px-3" (click)="eliminarProveedor(proveedor.codprov)">
+                    <i class="fa-solid fa-trash me-1 text-danger"></i>Eliminar
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

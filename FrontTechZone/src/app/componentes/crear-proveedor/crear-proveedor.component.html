@@ -1,0 +1,26 @@
+<div class="container mt-5 p-4 shadow rounded bg-white" style="max-width: 600px;">
+    <!-- Alerta -->
+    <ng-container *ngIf="mensaje">
+      <div [ngClass]="{
+          'alert': true,
+          'alert-success': tipoMensaje == 'success',
+          'alert-danger': tipoMensaje == 'error'
+        }">
+        {{ mensaje }}
+      </div>
+    </ng-container>
+  
+    <h3 class="mb-4 text-primary">Agregar proveedor</h3>
+  
+    <form class="row g-3" (ngSubmit)="agregarProveedor()">
+      <div class="col-12">
+        <label for="nom_prov" class="form-label fw-bold">Nombre del proveedor</label>
+        <input type="text" class="form-control" id="nom_prov" name="nom_prov"
+               [(ngModel)]="proveedor.nom_prov" placeholder="Ej: Ópticas Lima" required>
+      </div>
+  
+      <div class="col-12 d-flex justify-content-end mt-3">
+        <button type="submit" class="btn btn-success px-4">Agregar</button>
+      </div>
+    </form>
+  </div>

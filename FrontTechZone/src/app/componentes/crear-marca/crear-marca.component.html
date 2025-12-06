@@ -1,0 +1,35 @@
+<div class="container mt-5 p-4 shadow rounded bg-white" style="max-width: 700px;">
+    <!-- Alerta -->
+    <ng-container *ngIf="mensaje">
+      <div [ngClass]="{
+          'alert': true,
+          'alert-success': tipoMensaje == 'success',
+          'alert-danger': tipoMensaje == 'error'
+        }">
+        {{ mensaje }}
+      </div>
+    </ng-container>
+  
+    <h3 class="mb-4 text-primary">Registrar nueva marca</h3>
+  
+    <form class="row g-3" (ngSubmit)="crearMarca()">
+      
+     
+
+      <div class="col-md-12">
+        <label for="nom_marca" class="form-label fw-bold">Nombre de la marca</label>
+        <input type="text" class="form-control" id="nom_marca" name="nom_marca"
+               [(ngModel)]="marca.nom_marca" required placeholder="Ej: Ray-Ban">
+      </div>
+  
+      <div class="col-md-12">
+        <label for="pai_marca" class="form-label fw-bold">País de origen</label>
+        <input type="text" class="form-control" id="pai_marca" name="pai_marca"
+               [(ngModel)]="marca.pai_marca" required placeholder="Ej: Italia">
+      </div>
+  
+      <div class="col-12 d-flex justify-content-end mt-3">
+        <button type="submit" class="btn btn-success px-4">Guardar</button>
+      </div>
+    </form>
+  </div>

@@ -1,0 +1,56 @@
+<div class="container mt-5">
+  <div class="text-center mb-4">
+    <h2 class="fw-bold" style="background: linear-gradient(to right, #007bff, #00bcd4); -webkit-background-clip: text; color: transparent;">
+      {{ titulo }}
+    </h2>
+    <p class="text-muted">Gestión completa de productos registrados</p>
+    <hr class="w-50 mx-auto border-2 border-primary opacity-50" />
+  </div>
+
+  <div *ngIf="cargoTerminada">
+    <div class="p-3 bg-white shadow-lg rounded-4 border border-light">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle mb-0">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th class="text-center">Código</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th class="text-center">Stock</th>
+              <th class="text-center">Precio</th>
+              <th class="text-center">Categoría</th>
+              <th class="text-center">Proveedor</th>
+              <th class="text-center">Marca</th>
+              <th class="text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let producto of productos">
+              <td class="text-center fw-semibold text-primary">{{ producto.codprod }}</td>
+              <td class="text-capitalize">{{ producto.nom_prod }}</td>
+              <td>{{ producto.des_prod }}</td>
+              <td class="text-center">{{ producto.stock_prod }}</td>
+              <td class="text-center">{{ producto.precio_compra | currency:'USD':'symbol' }}</td>
+              <td class="text-center">{{ producto.cod_cat }}</td>
+              <td class="text-center">{{ producto.cod_prov }}</td>
+              <td class="text-center">{{ producto.cod_marca }}</td>
+              <td class="text-center">
+                <div class="d-flex justify-content-center gap-2">
+                  <button class="btn btn-sm btn-outline-primary rounded-pill px-3" (click)="editarProducto(producto.codprod)">
+                    <i class="fa-solid fa-pen-to-square me-1 text-primary"></i>Editar
+                  </button>
+                  <button class="btn btn-sm btn-outline-success rounded-pill px-3" (click)="verDetalleProducto(producto.codprod)">
+                    <i class="fa-solid fa-eye me-1 text-success"></i>Detalle
+                  </button>
+                  <button class="btn btn-sm btn-outline-danger rounded-pill px-3" (click)="eliminarProducto(producto.codprod)">
+                    <i class="fa-solid fa-trash me-1 text-danger"></i>Eliminar
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody> 
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

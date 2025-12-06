@@ -1,0 +1,54 @@
+<div class="container mt-5" style="max-width: 650px;">
+    <div class="text-center mb-4">
+      <h2 class="text-success">👤 Detalle de Usuario</h2>
+      <hr class="w-50 mx-auto" />
+    </div>
+  
+    <div class="card shadow-lg rounded-4 border-success">
+      <div class="card-body px-5 py-4">
+        <div class="mb-3">
+            <h5 class="fw-semibold text-secondary">Código</h5>
+            <p class="fs-5">{{ usuario.codusu }}</p>
+          </div>
+        <div class="mb-3">
+          <h5 class="fw-semibold text-secondary">DNI</h5>
+          <p class="fs-5">{{ usuario.dni_usu }}</p>
+        </div>
+        <div class="mb-3">
+          <h5 class="fw-semibold text-secondary">Nombre</h5>
+          <p class="fs-5">{{ usuario.nomUsu }}</p>
+        </div>
+        <div class="mb-3">
+          <h5 class="fw-semibold text-secondary">Apellido</h5>
+          <p class="fs-5">{{ usuario.ape_usu }}</p>
+        </div>
+        <div class="mb-3">
+          <h5 class="fw-semibold text-secondary">Email</h5>
+          <p class="fs-5">{{ usuario.email }}</p>
+        </div>
+        <div class="mb-3">
+          <h5 class="fw-semibold text-secondary">Teléfono</h5>
+          <p class="fs-5">{{ usuario.telefono }}</p>
+        </div>
+        <div class="mb-3">
+          <h5 class="fw-semibold text-secondary">Dirección</h5>
+          <p class="fs-5">{{ usuario.direccion }}</p>
+        </div>
+        <div class="mb-3">
+          <h5 class="fw-semibold text-secondary">Usuario</h5>
+          <p class="fs-5">{{ usuario.usuario }}</p>
+        </div>
+        <div class="mb-3">
+          <h5 class="fw-semibold text-secondary">Rol</h5>
+          <p class="fs-5">{{ usuario.rol }}</p>
+        </div>
+      </div>
+    </div>
+  
+    <div class="d-flex justify-content-end mt-4">
+      <a routerLink="/listarUsuarios" class="btn btn-success px-4">
+        ← Volver
+      </a>
+    </div>
+  </div>
+  

@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TechZoneApplication<TechZone>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.techzone.techzone.TechZoneApplication",
+            "projectName": "TechZone",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

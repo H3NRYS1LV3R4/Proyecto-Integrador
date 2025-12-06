@@ -1,0 +1,32 @@
+<div class="container mt-5 p-4 shadow rounded bg-white" style="max-width: 700px;">
+    <ng-container *ngIf="mensaje">
+      <div [ngClass]="{
+          'alert': true,
+          'alert-success': tipoMensaje == 'success',
+          'alert-danger': tipoMensaje == 'error'
+        }">
+        {{ mensaje }}
+      </div>
+    </ng-container>
+  
+    <h3 class="mb-4 text-primary">Actualizar categoría</h3>
+  
+    <form class="row g-3" (ngSubmit)="actualizarCategoria()">
+      <div class="col-md-4">
+        <label for="codcat" class="form-label fw-semibold">Código</label>
+        <input type="number" class="form-control" id="codcat" name="codcat"
+               [(ngModel)]="categoria.codcat" readonly>
+      </div>
+  
+      <div class="col-md-8">
+        <label for="nom_cat" class="form-label fw-semibold">Nombre de la categoría</label>
+        <input type="text" class="form-control" id="nom_cat" name="nom_cat"
+               [(ngModel)]="categoria.nom_cat" placeholder="Ej: Teclados" required>
+      </div>
+  
+      <div class="col-12 d-flex justify-content-end mt-3">
+        <button type="submit" class="btn btn-primary px-4">Actualizar</button>
+      </div>
+    </form>
+  </div>
+  
