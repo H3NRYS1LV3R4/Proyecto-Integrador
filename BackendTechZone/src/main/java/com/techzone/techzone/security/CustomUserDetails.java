@@ -14,9 +14,6 @@ public class CustomUserDetails implements UserDetails
 
     private final Usuario usuario;
 
-    
-    
-
     public CustomUserDetails(Usuario usuario) {
         this.usuario = usuario;
     }
@@ -34,7 +31,7 @@ public class CustomUserDetails implements UserDetails
 
     @Override
     public String getUsername() {
-        return usuario.getNomUsu();
+        return usuario.getUsuario();
     }
 
     @Override

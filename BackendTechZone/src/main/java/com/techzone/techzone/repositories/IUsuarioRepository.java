@@ -9,5 +9,5 @@ import com.techzone.techzone.models.Usuario;
 
 @Repository
 public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
-    Usuario findByNomUsu(String nom_usu);
+    Usuario findByUsuario(String usuario);
 }

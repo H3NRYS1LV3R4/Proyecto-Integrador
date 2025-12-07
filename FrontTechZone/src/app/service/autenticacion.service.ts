@@ -58,10 +58,9 @@ export class AutenticacionService {
 
   logout(): void {
     if (isPlatformBrowser(this.platformId)) {
-      // Verifica si 'localStorage' está disponible
       localStorage.removeItem('authHeader');
       localStorage.removeItem('usuarioId'); 
-      localStorage.removeItem('rol');
+      localStorage.removeItem('rol');
     }
   }
 

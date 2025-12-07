@@ -1,5 +1,7 @@
 package com.techzone.techzone.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,6 +33,7 @@ public class DetalleCompra {
 
     @ManyToOne
     @JoinColumn(name = "cod_compra", insertable=false, updatable=false)
+    @JsonIgnore
     private Compra compra;
 
     @ManyToOne

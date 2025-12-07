@@ -28,32 +28,52 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http
-		.cors(cors -> cors.configurationSource(corsConfigurationSource()))
-		.csrf(csrf -> csrf.disable())
-		.authorizeHttpRequests(auth -> auth
-				 .requestMatchers(HttpMethod.GET, "/api/productos/**").permitAll()
-				 .requestMatchers(HttpMethod.GET, "/api/categorias/**").permitAll()
-				 .requestMatchers(HttpMethod.GET, "/api/marcas/**").permitAll()
-				 .requestMatchers(HttpMethod.GET, "/api/proveedores/**").permitAll()
-				 .requestMatchers(HttpMethod.GET, "/api/usuarios/**").hasRole("ADMIN")
-				 .requestMatchers(HttpMethod.GET, "/api/compras/reporte").hasRole("ADMIN")
-				 .requestMatchers(HttpMethod.POST, "/api/productos").hasRole("ADMIN")  		 //✅
-				 .requestMatchers(HttpMethod.POST, "/api/categorias").hasRole("ADMIN") 		 //✅
-				 .requestMatchers(HttpMethod.POST, "/api/marcas").hasRole("ADMIN")     		 //✅
-				 .requestMatchers(HttpMethod.POST, "/api/proveedores").hasRole("ADMIN")		 //✅
-				 .requestMatchers(HttpMethod.POST, "/api/usuarios/registrar").permitAll()            //✅
-				 .requestMatchers(HttpMethod.POST, "/api/compras/registrar").permitAll()            //✅
-				 .requestMatchers(HttpMethod.PUT, "/api/marcas/**").hasRole("ADMIN")   		 //✅
-				 .requestMatchers(HttpMethod.PUT, "/api/proveedores/**").hasRole("ADMIN")       //✅
-				 .requestMatchers(HttpMethod.DELETE, "/api/marcas/**").hasRole("ADMIN")		 //✅
-				 .requestMatchers(HttpMethod.DELETE, "/api/proveedores/**").hasRole("ADMIN")    //✅
-				 .requestMatchers(HttpMethod.DELETE, "api/productos").hasRole("ADMIN")
-				 .requestMatchers(HttpMethod.DELETE, "/api/usuarios").hasRole("ADMIN")         //✅	
-				 .anyRequest().authenticated()
-				)
-			.httpBasic(basic -> {});
-		return http.build();
+	    http
+	    .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+	    .csrf(csrf -> csrf.disable())
+	    .authorizeHttpRequests(auth -> auth
+	             // --- RUTAS PÚBLICAS (Solo Lectura) ---
+	             .requestMatchers(HttpMethod.GET, "/api/productos/**").permitAll()
+	             .requestMatchers(HttpMethod.GET, "/api/categorias/**").hasRole("ADMIN")
+	             .requestMatchers(HttpMethod.GET, "/api/marcas/**").hasRole("ADMIN")
+	             .requestMatchers(HttpMethod.GET, "/api/proveedores/**").hasRole("ADMIN")
+	             
+	             // --- LOGIN Y REGISTROS PÚBLICOS ---
+	             .requestMatchers(HttpMethod.GET, "/api/usuarios/login").authenticated() // El cliente necesita esto para entrar
+	             .requestMatchers(HttpMethod.POST, "/api/usuarios/registrar").permitAll()
+	             .requestMatchers(HttpMethod.POST, "/api/compras/registrar").permitAll() // El cliente necesita esto para comprar
+
+	             // --- RUTAS PROTEGIDAS (SOLO ADMIN) ---
+	             
+	             // 1. Reportes y Usuarios
+	             .requestMatchers(HttpMethod.GET, "/api/usuarios/**").hasRole("ADMIN")
+	             .requestMatchers(HttpMethod.GET, "/api/compras/reporte").hasRole("ADMIN")
+
+	             // 2. CREACIÓN (POST) - Protegido
+	             .requestMatchers(HttpMethod.POST, "/api/productos").hasRole("ADMIN")
+	             .requestMatchers(HttpMethod.POST, "/api/categorias").hasRole("ADMIN")
+	             .requestMatchers(HttpMethod.POST, "/api/marcas").hasRole("ADMIN")
+	             .requestMatchers(HttpMethod.POST, "/api/proveedores").hasRole("ADMIN")
+	             
+	             // 3. ACTUALIZACIÓN (PUT) - ¡AQUÍ ESTABA EL HUECO!
+	             // Agregamos protección para productos y generalizamos para el resto
+	             .requestMatchers(HttpMethod.PUT, "/api/productos/**").hasRole("ADMIN") // <--- FALTABA ESTO
+	             .requestMatchers(HttpMethod.PUT, "/api/marcas/**").hasRole("ADMIN")
+	             .requestMatchers(HttpMethod.PUT, "/api/proveedores/**").hasRole("ADMIN")
+	             .requestMatchers(HttpMethod.PUT, "/api/categorias/**").hasRole("ADMIN")
+
+	             // 4. ELIMINACIÓN (DELETE) - ¡CORREGIDO EL ERROR DE TIPEO!
+	             // Antes decía "api/productos" (sin /), ahora es correcto:
+	             .requestMatchers(HttpMethod.DELETE, "/api/productos/**").hasRole("ADMIN") // <--- CORREGIDO
+	             .requestMatchers(HttpMethod.DELETE, "/api/marcas/**").hasRole("ADMIN")
+	             .requestMatchers(HttpMethod.DELETE, "/api/proveedores/**").hasRole("ADMIN")
+	             .requestMatchers(HttpMethod.DELETE, "/api/usuarios/**").hasRole("ADMIN")
+	             
+	             // Bloqueo final por seguridad
+	             .anyRequest().authenticated()
+	            )
+	        .httpBasic(basic -> {});
+	    return http.build();
 	}
 	@Autowired
     private PasswordEncoder passwordEncoder;

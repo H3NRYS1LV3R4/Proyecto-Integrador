@@ -27,7 +27,7 @@ public class UsuarioService {
     private PasswordEncoder passwordEncoder;
 	
 	public Usuario buscarPorNomUsu(String nomUsu) {
-	    return repoUsua.findByNomUsu(nomUsu);
+	    return repoUsua.findByUsuario(nomUsu);
 	}
 
     public Usuario registrarUsuario(Usuario usuario) {
