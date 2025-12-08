@@ -32,6 +32,8 @@ export class CrearUsuarioComponent {
 }
 
   agregarUsuario():void{
+    this.usuario.rol = 'CLIENTE';
+    
     this.usuarioService.registrar(this.usuario).subscribe({
       next: () =>{
         this.router.navigate(['/listarProductos']);

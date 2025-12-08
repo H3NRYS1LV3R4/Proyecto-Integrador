@@ -10,6 +10,7 @@ import jakarta.persistence.Transient;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -92,12 +93,14 @@ public class Compra {
         this.fecCompra = LocalDate.now();
     }
 	
-	@Transient
+	@OneToMany(mappedBy = "compra")
     private List<DetalleCompra> detalles; 
 
     public List<DetalleCompra> getDetalles() {
 		return detalles;
 	}
+    
+    
 
 	
 }

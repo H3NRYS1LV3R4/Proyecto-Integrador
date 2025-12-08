@@ -24,7 +24,7 @@ export class LoginComponent {
     private route: ActivatedRoute
   ) {
     // Capturamos el returnUrl de los query params (si existe)
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/listadoMarcas';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/catalogo';
   }
 
   onLogin(): void {

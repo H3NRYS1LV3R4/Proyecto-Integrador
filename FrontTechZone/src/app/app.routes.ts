@@ -9,7 +9,8 @@ import { CrearMarcaComponent } from './componentes/crear-marca/crear-marca.compo
 import { CrearProveedorComponent } from './componentes/crear-proveedor/crear-proveedor.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { CrearCategoriaComponent } from './componentes/crear-categoria/crear-categoria.component';
-import { authGuard } from './guard/auth.guard';
+import { adminGuard } from './guard/auth.guard';
+import { ListarComprasComponent } from './componentes/listar-compras/listar-compras.component';
 import { CarritoComponent } from './componentes/carrito/carrito.component';
 import { ListarCategoriaComponent } from './componentes/listar-categoria/listar-categoria.component';
 import { ListarProductosComponent } from './componentes/listar-productos/listar-productos.component';
@@ -27,32 +28,34 @@ import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
 export const routes: Routes = [
     { path: '', redirectTo: 'listarProductos', pathMatch: 'full' },
     // Ediciones
-    { path: 'editar-producto/:codprod', component: ActualizarProductoComponent, canActivate:[authGuard]},
-    { path: 'editar/:codmarca', component: ActualizarMarcaComponent ,canActivate:[authGuard]},
-    { path: 'editarp/:codprov', component: ActualizarProveedorComponent,canActivate:[authGuard] },
-    { path: 'editarcategoria/:codcat', component: ActualizarCategoriaComponent, canActivate:[authGuard]},
-    { path: 'editar-usuario/:codUsu', component: ActualizarUsuarioComponent, canActivate:[authGuard]},
+    { path: 'editar-producto/:codprod', component: ActualizarProductoComponent, canActivate:[adminGuard]},
+    { path: 'editar/:codmarca', component: ActualizarMarcaComponent ,canActivate:[adminGuard]},
+    { path: 'editarp/:codprov', component: ActualizarProveedorComponent,canActivate:[adminGuard] },
+    { path: 'editarcategoria/:codcat', component: ActualizarCategoriaComponent, canActivate:[adminGuard]},
+    { path: 'editar-usuario/:codUsu', component: ActualizarUsuarioComponent, canActivate:[adminGuard]},
     //registros
-    { path: 'registrarProveedor', component: CrearProveedorComponent,canActivate:[authGuard]},
-    { path: 'crearCategoria', component: CrearCategoriaComponent, canActivate:[authGuard]},
-    { path: 'registrarMarca', component: CrearMarcaComponent,canActivate:[authGuard]},
-    { path: 'registrarProducto', component: CrearProductoComponent, canActivate: [authGuard]},
+    { path: 'registrarProveedor', component: CrearProveedorComponent,canActivate:[adminGuard]},
+    { path: 'crearCategoria', component: CrearCategoriaComponent, canActivate:[adminGuard]},
+    { path: 'registrarMarca', component: CrearMarcaComponent,canActivate:[adminGuard]},
+    { path: 'registrarProducto', component: CrearProductoComponent, canActivate: [adminGuard]},
     { path: 'crearUsuario', component: CrearUsuarioComponent},
 
     // listados 
-    { path: 'listadoMarcas', component: ListarMarcasComponent, canActivate: [authGuard]},
-    { path: 'listadoProveedores', component: ListarProveedoresComponent, canActivate: [authGuard]},
-    { path: 'listarCategorias' , component: ListarCategoriaComponent, canActivate: [authGuard]},
+    { path: 'listadoMarcas', component: ListarMarcasComponent, canActivate: [adminGuard]},
+    { path: 'listadoProveedores', component: ListarProveedoresComponent, canActivate: [adminGuard]},
+    { path: 'listarCategorias' , component: ListarCategoriaComponent, canActivate: [adminGuard]},
+    { path: 'listarUsuarios', component: ListarUsuariosComponent, canActivate: [adminGuard]},
+    { path: 'reporteCompras', component: ListarComprasComponent, canActivate: [adminGuard]}, 
     { path: 'listarProductos', component: ListarProductosComponent},
-    { path: 'listarUsuarios', component: ListarUsuariosComponent, canActivate: [authGuard]},
+    { path: 'listarUsuarios', component: ListarUsuariosComponent, canActivate: [adminGuard]},
     
     // detalles 
-    { path: 'detalle/:codmarca', component: VerMarcaComponent, canActivate: [authGuard]},
-    { path: 'detallec/:codcat', component: VerCategoriaComponent, canActivate: [authGuard]},
-    { path: 'detallep/:codprov', component: VerProveedorComponent, canActivate: [authGuard]},
+    { path: 'detalle/:codmarca', component: VerMarcaComponent, canActivate: [adminGuard]},
+    { path: 'detallec/:codcat', component: VerCategoriaComponent, canActivate: [adminGuard]},
+    { path: 'detallep/:codprov', component: VerProveedorComponent, canActivate: [adminGuard]},
     { path: 'detalle-producto/:codprod', component: VerProductoComponent},
     { path: 'login' , component: LoginComponent},
-    { path: 'detalleUsuario/:codUsu', component: VerUsuariosComponent, canActivate: [authGuard]},
+    { path: 'detalleUsuario/:codUsu', component: VerUsuariosComponent, canActivate: [adminGuard]},
 
     { path: 'catalogo', component: CatalogoComponent },
 
